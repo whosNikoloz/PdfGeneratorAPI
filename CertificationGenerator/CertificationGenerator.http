@@ -1,0 +1,6 @@
+@CertificationGenerator_HostAddress = http://localhost:5084
+
+GET {{CertificationGenerator_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
