@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CertificationGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1ba9374774cdbbc512279567c7d8336bf500f00")]
 [assembly: System.Reflection.AssemblyProductAttribute("CertificationGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CertificationGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

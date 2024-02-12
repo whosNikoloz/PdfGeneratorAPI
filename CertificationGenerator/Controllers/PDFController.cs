@@ -16,14 +16,60 @@ namespace CertificationGenerator.Controllers
             this._pdfGenerator = pdfGenerator;
         }
 
-
+        
         [HttpPost("Generatepdf")]
         public IActionResult GeneratePDf(requestModel req)
         {
 
-            string HtmlContent = "<html><body><h1>Hello Nika!</h1>" +
-                "<img src ='https://firebasestorage.googleapis.com/v0/b/eduspace-a81b5.appspot.com/o/EduSpaceLogo.png?alt=media&token=7b7dc8a5-05d8-4348-9b4c-c19913949c67'" +
-                "alt='Example Image'></body></html>";
+            string HtmlContent = $@"
+            <div class='certificate-container'>
+                <div class='certificate'>
+                    <div class='water-mark-overlay'></div>
+                    <div class='certificate-header'>
+                        <img src='https://rnmastersreview.com/img/logo.png' class='logo' alt=''>
+                    </div>
+                    <div class='certificate-body'>
+                        <p class='certificate-title'><strong>RENR NCLEX AND CONTINUING EDUCATION (CME) Review Masters</strong></p>
+                        <h1>Certificate of Completion</h1>
+                        <p class='student-name'>{req.FirstName} {req.LastName}</p>
+                        <div class='certificate-content'>
+                            <div class='about-certificate'>
+                                <p>
+                                    დაამტავრეე :  {req.Subject}
+                                </p>
+                            </div>
+                            <p class='topic-title'>
+                                The Topic consists of [hours] Continuity hours and includes the following:
+                            </p>
+                            <div class='text-center'>
+                                <p class='topic-description text-muted'>Contract adminitrator - Types of claim - Claim Strategy - Delay analysis - Thepreliminaries to a claim - The essential elements to a successful claim - Responses - Claim preparation and presentation </p>
+                            </div>
+                        </div>
+                        <div class='certificate-footer text-muted'>
+                            <div class='row'>
+                                <div class='col-md-6'>
+                                    <p>Principal: ______________________</p>
+                                </div>
+                                <div class='col-md-6'>
+                                    <div class='row'>
+                                        <div class='col-md-6'>
+                                            <p>
+                                                Accredited by
+                                            </p>
+                                        </div>
+                                        <div class='col-md-6'>
+                                            <p>
+                                                Endorsed by
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    ";
 
             byte[] pdfBytes = _pdfGenerator.GeneratorPdf(HtmlContent);
 
