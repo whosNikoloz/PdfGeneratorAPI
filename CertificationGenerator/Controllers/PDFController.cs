@@ -1,6 +1,8 @@
 ﻿using CertificationGenerator.Services;
 using Microsoft.AspNetCore.Mvc;
 using CertificationGenerator.Models;
+using System.Net.Http.Headers;
+using System.Security.Cryptography.Xml;
 
 namespace CertificationGenerator.Controllers
 {
@@ -16,17 +18,23 @@ namespace CertificationGenerator.Controllers
             this._pdfGenerator = pdfGenerator;
         }
 
-        
+
         [HttpPost("Generatepdf")]
         public IActionResult GeneratePDf(requestModel req)
         {
+
+
+            var Link = "https://edu-space.vercel.app";
+
+
+            var qrCodeImg = "http://api.qrserver.com/v1/create-qr-code/?data=" + Link + "&size=100x100";
 
             string HtmlContent = $@"
             <div class='certificate-container'>
                 <div class='certificate'>
                     <div class='water-mark-overlay'></div>
                     <div class='certificate-header'>
-                        <img src='https://rnmastersreview.com/img/logo.png' class='logo' alt=''>
+                        <img src='https://edu-space.vercel.app/EduSpaceLogo.png' class='logo' alt=''>
                     </div>
                     <div class='certificate-body'>
                         <p class='certificate-title'><strong>RENR NCLEX AND CONTINUING EDUCATION (CME) Review Masters</strong></p>
@@ -45,6 +53,7 @@ namespace CertificationGenerator.Controllers
                                 <p class='topic-description text-muted'>Contract adminitrator - Types of claim - Claim Strategy - Delay analysis - Thepreliminaries to a claim - The essential elements to a successful claim - Responses - Claim preparation and presentation </p>
                             </div>
                         </div>
+                        <img src={qrCodeImg} class='logo' alt=''>
                         <div class='certificate-footer text-muted'>
                             <div class='row'>
                                 <div class='col-md-6'>
